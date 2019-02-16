@@ -1,0 +1,100 @@
+@prefix ceasn: <http://purl.org/ctdlasn/terms/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+
+ceasn:CriterionCategory a rdfs:Class ;
+    rdfs:label "Criterion Category ;
+    rdfs:comment "Resource identifying a category by which Rubric Criterion may be grouped."@en-US .
+    
+ceasn:CriterionLevel a rdfs:Class ;
+    rdfs:label "Criterion Level"@en-US ;
+    rdfs:comment "Resource identifying one or more benchmarks that must be met to achieve a performance task."@en-US .
+
+ceasn:Rubric a rdfs:Class ;
+    rdfs:label "Rubric"@en-US ;
+    rdfs:comment "Resource providing guidance in evaluating the quality and level of person's responses or actions based on an explicit set of criteria."@en-US .
+
+ceasn:RubricCriterion a rdfs:Class ;
+    rdfs:label "Rubric Criterion"@en-US ;
+    rdfs:comment "Resource identifying a criterion that must be met to demonstrate quality performance of a objective or task."@en-US .
+
+ceasn:benchmark a rdfs:Property ;
+    rdfs:label "Benchmark"@en-US ;
+    rdfs:comment "Description of a level of achievement on a performance task defined by the RubricCriterion."@en-US ;
+    rdfs:domain ceasn:CriterionLevel ;
+    rdfs:range rdf:langString ;
+    owl:equivalentProperty <https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=14443> ;
+    vann:usageNote "Can have one or more per CriterionLevel."@en-US .
+    
+ceasn:description a rdfs:Property ;
+    rdfs:label "Description"@en-US ;
+    rdfs:comment "Short description of the resource."@en-US ;
+    rdfs:domain ceasn:Rubric, ceasn:Criterion ceasn:CriterionCategory ;
+    rdfs:range rdf:langString .
+    
+ceasn:hasCriterion a rdfs:Property ;
+    rdfs:label "Has Criterion"@en-US ;
+    rdfs:comment "RubricCriterian or CriterionCategory referenced by the Rubric that defining criterion to be met to demonstrate quality in execution in performance of a task or obtaining an objectivetask."@en-US ;
+    rdfs:domain ceasn:Rubric ;
+    rdfs:range ceasn:RubricCriterion, ceasn:CriterionCategory .
+
+ceasn:hasLevel a rdfs:Property ;
+    rdfs:label "Has Level"@en-US ;
+    rdfs:comment "Resource description of a level of performance based on a RubricCriterion."@en-US ;
+    rdfs:domain ceasn:RubricCriterion ;
+    rdfs:range ceasn:CriterionLevel ;
+    owl:equivalentProperty <https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=14443> .
+
+ceasn:hasScope a rdfs:Property ;
+    rdfs:label "Scope"@en-US ;
+    rdfs:comment "Description of what the rubric's creator intended to assess or evaluate."@en-US ;
+    rdfs:domain ceasn:Rubric; 
+    rdfs:range rdf:langString .
+
+ceasn:name a rdfs:Property ;
+    rdfs:name "Name"@en-US ;
+    rdfs:comment "Name or title of this resource"@en-US ;
+    rdfs:domain ceasn:Rubric, ceasn:RubricCriterion, ceasn:CriterionCategory ;
+    rdfs:range rdf:langString .
+
+ceasn:qualityLabel a rdfs:Property ;
+    rdfs:label "Quality Label"@en-US ;
+    rdfs:description "Qualitative description of this degree of achievement used for column headers in tabular rubrics."@en-US ;
+    rdfs:domain ceasn:CriterionLevel ;
+    rdfs:range  xsd:string .
+
+ceasn:score a rdfs:Property ;
+    rdfs:label "Criterion Level Score"@en-US ;
+    rdfs:comment "Points to be awarded for achieving this level for a RubricCriterion."@en-US ;
+    rdfs:domain ceasn:CriterionLevel ;
+    rdfs:range xsd:float ;
+    owl:equivalentProperty <https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=14447> .
+    
+ceasn:sequence a rdfs:Property ;
+    rdfs:label "Sequence"@en-US ;
+    rdfs:comment "Numeric value representing the resource's position in the list (array) of resources."@en-US ;
+    rdfs:domain ceasn:Sewuence ;
+    rdfs:range xsd:integer ;
+    owl:equivalentProperty <https://ceds.ed.gov/CEDSElementDetails.aspx?TermId=14445> .
+
+ceasn:source a rdfs:Property ;
+    rdfs:label "Source"@en-US ;
+    rdfs:comment "The original resource which this resource is based on or derived from."@en-US ;
+    rdfs:domain ceasn:Rubric ;
+    rdfs:range vsd:anyURI .
+    
+ceasn:weight a rdfs:Property ;
+    rdfs:label "Weight"@en-US;
+    rdfs:comment "An asserted measurement of the weight, degree, percent, or strength of a recommendation, requirement, or comparison."@en-US ;
+    dct:description "A numeric weight assigned to this RubricCriterion, used for scored rubrics."@en-us ;
+    rdfs:domain ceterms:RubricCriterion ;
+    rdfs:range xsd:float .
+
+
+
+
